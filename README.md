@@ -11,7 +11,7 @@ $user = new App\Models\User();
 $user->name = "Name";
 $user->password = Hash::make('PASSWORD');
 $user->email = 'email@domain';
-$user->save
+$user->save();
 ```
 
 ## Installation
