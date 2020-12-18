@@ -11,7 +11,6 @@ $user = new App\Models\User();
 $user->name = "Name";
 $user->password = Hash::make('PASSWORD');
 $user->email = 'email@domain';
-$user->api_key = 'random_set_of_characters_that_should_really_be_generated';
 $user->save
 ```
 
