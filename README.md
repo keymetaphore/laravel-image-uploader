@@ -1,7 +1,6 @@
 # This is an Imgur clone started since they began showing adverts on image upload
 The project is not complete: 
 - multiple image upload in a single batch is not supported yet
-- API keys still have to be generated automatically
 - No register option
 
 
