@@ -9,7 +9,7 @@ class UploadGroup extends Model
 {
     use HasFactory;
 
-    public function images ()
+    public function images()
     {
         return $this->hasMany('App\Models\File', 'id', 'uploadGroup');
     }

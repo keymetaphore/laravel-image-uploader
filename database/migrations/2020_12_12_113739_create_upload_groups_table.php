@@ -16,7 +16,7 @@ class CreateUploadGroupsTable extends Migration
         Schema::create('upload_groups', function (Blueprint $table) {
             $table->id();
             $table->string('uniqueid');
-            $table->foreignId("author");
+            $table->foreignId('author');
             $table->timestamps();
         });
     }

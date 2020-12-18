@@ -15,8 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    if (Auth::check())
+    if (Auth::check()) {
         return redirect('start');
+    }
+
     return redirect('login');
 });
 
@@ -30,4 +32,3 @@ Route::get('/api', 'App\Http\Controllers\ThirdPartyController@view')->middleware
 require __DIR__.'/auth.php';
 
 Route::post('file-upload', 'App\Http\Controllers\UploadController@upload')->name('file.upload.post');
-
