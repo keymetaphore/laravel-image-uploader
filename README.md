@@ -1,6 +1,4 @@
 # This is an Imgur clone started since they began showing adverts on image upload
-The project is not yet complete: 
-- multiple image upload in a single batch is not supported yet
 
 ## Installation
 
