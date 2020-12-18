@@ -1,18 +1,6 @@
 # This is an Imgur clone started since they began showing adverts on image upload
-The project is not complete: 
+The project is not yet complete: 
 - multiple image upload in a single batch is not supported yet
-- No register option
-
-
-## Adding a profile:
-```
-php artisan tinker
-$user = new App\Models\User();
-$user->name = "Name";
-$user->password = Hash::make('PASSWORD');
-$user->email = 'email@domain';
-$user->save();
-```
 
 ## Installation
 
