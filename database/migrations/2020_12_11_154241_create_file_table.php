@@ -17,6 +17,7 @@ class CreateFileTable extends Migration
             $table->id();
             $table->string('uniqueid');
             $table->string('path');
+            $table->foreignId('uploadGroup');
             $table->timestamps();
         });
     }

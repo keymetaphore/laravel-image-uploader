@@ -63,7 +63,7 @@
             <div class="gallery" id="gallery">
                 @foreach ($images as $image)
                     <div class="mb-3 pics animation all 2">
-                        <a href="{{ $image->path }}">
+                        <a href="{{ route('file.view', $image->group->uniqueid) }}">
                             <img alt=":(" class="object-fit w-full" src="{{ $image->path }}" data-src="lazy.jpg">
                         </a>
                     </div>

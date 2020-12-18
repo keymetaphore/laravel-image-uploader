@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\File;
+use App\Models\UploadGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -10,11 +11,14 @@ class ImageController extends Controller
 {
     public function view(Request $request, $unique)
     {
-        $imageData = File::where('uniqueid', $unique)->firstOrFail();
-        abort_unless(file_exists(public_path($imageData->path)), 404, 'File not found');
+        $images = UploadGroup::where('uniqueid', $unique)->firstOrFail()->images;
+
+        foreach ($images as $image) {
+            abort_unless(file_exists(public_path($image->path)), 404, 'File not found');
+        }
 
         return view('view-image')
-            ->with(['imageLink' => asset($imageData->path)]);
+            ->with(['images' => $images]);
     }
 
     public function gallery(Request $request)

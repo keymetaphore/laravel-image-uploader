@@ -56,51 +56,55 @@
     </x-slot>
     <div class="container mx-auto max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div class="grid grid-cols-4 gap-3">
-            <div class="mt-10 text-gray-100 bg-gray-700 col-span-3">
-                <div class="grid grid-cols-2">
-                    <div>
-                        <p class="text-gray-400 ml-10">0 {{ __('messages.views') }} • 12d</p>
+            @foreach ($images as $image)
+                @php
+                $image->path = asset($image->path);
+                @endphp
+                <div class="mt-10 text-gray-100 bg-gray-700 col-span-3">
+                    <div class="grid grid-cols-2">
+                        <div>
+                            <p class="text-gray-400 ml-10">0 {{ __('messages.views') }} • 12d</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-400 text-right mr-10">{{ __('messages.uploaded') }} a user</p>
+                        </div>
                     </div>
-                    <div>
-                        <p class="text-gray-400 text-right mr-10">{{ __('messages.uploaded') }} kevins</p>
+
+                    <div class="image bg-black">
+                        <img src="{{ $image->path }}" alt=":(">
                     </div>
                 </div>
+                <div class="mt-10 text-gray-100 bg-gray-700 p-3" height="300px;">
+                    <label>{{ __('messages.direct_url') }}:</label>
+                    <div class="tooltip">
+                        <input type="text" readonly class="text-xs w-full bg-gray-800 text-blue-100 te" value="{{ $image->path }}" onclick="copyToClipboard(this, this.closest('.tooltiptext'))">
+                        <p class="tooltiptext">{{ __('messages.click_to_copy') }}</p>
+                    </div>
 
-                <div class="image bg-black">
-                    <img src="{{ $imageLink }}" alt=":(">
+                    <div class="mt-10"></div>
+                    <label>{{ __('messages.bb_code') }}:</label>
+                    <div class="tooltip">
+                        <input type="text" readonly class="text-xs w-full bg-gray-800 text-blue-100 te" value="[img]{{ $image->path }}[/img]" onclick="copyToClipboard(this, this.closest('.tooltiptext'))">
+                        <p class="tooltiptext">{{ __('messages.click_to_copy') }}</p>
+                    </div>
+                    <div class="mt-10"></div>
+                    <label>{{ __('messages.reddit_code') }}:</label>
+                    <div class="tooltip">
+                        <input type="text" readonly class="text-xs w-full bg-gray-800 text-blue-100 te" value="[image]({{ $image->path }})" onclick="copyToClipboard(this, this.closest('.tooltiptext'))">
+                        <p class="tooltiptext">{{ __('messages.click_to_copy') }}</p>
+                    </div>
                 </div>
-            </div>
-            <div class="mt-10 text-gray-100 bg-gray-700 p-3" height="300px;">
-                <label>{{ __('messages.direct_url') }}:</label>
-                <div class="tooltip">
-                    <input type="text" id="directlink" readonly class="text-xs w-full bg-gray-800 text-blue-100 te" value="{{ $imageLink }}" onclick="copyToClipboard(this)">
-                    <p class="tooltiptext" id="text_toolt">{{ __('messages.click_to_copy') }}</p>
-                </div>
-
-                <div class="mt-10"></div>
-                <label>{{ __('messages.bb_code') }}:</label>
-                <div class="tooltip">
-                    <input type="text" id="directlink" readonly class="text-xs w-full bg-gray-800 text-blue-100 te" value="[img]{{ $imageLink }}[/img]" onclick="copyToClipboard(this)">
-                    <p class="tooltiptext" id="text_toolt">{{ __('messages.click_to_copy') }}</p>
-                </div>
-                <div class="mt-10"></div>
-                <label>{{ __('messages.reddit_code') }}:</label>
-                <div class="tooltip">
-                    <input type="text" id="directlink" readonly class="text-xs w-full bg-gray-800 text-blue-100 te" value="[image]({{ $imageLink }})" onclick="copyToClipboard(this)">
-                    <p class="tooltiptext" id="text_toolt">{{ __('messages.click_to_copy') }}</p>
-                </div>
-            </div>
+            @endforeach
         </div>
     </div>
 
     <script type="application/javascript">
-        function copyToClipboard (copyText) {
+        function copyToClipboard (copyText, tooltip) {
             copyText.select();
             copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 
             /* Copy the text inside the text field */
             document.execCommand("copy");
-            var tooltip = document.getElementById("text_toolt");
             tooltip.innerHTML = "{{ __('messages.copied') }}";
             $("#text_toolt").addClass('greenbg');
             setTimeout(function() {
