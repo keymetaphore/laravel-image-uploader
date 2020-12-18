@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UploadGroup;
 use App\Models\File;
+use App\Models\UploadGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

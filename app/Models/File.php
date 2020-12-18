@@ -11,7 +11,7 @@ class File extends Model
     protected $table = 'file';
     use HasFactory;
 
-    public function group ()
+    public function group()
     {
         return $this->hasOne('App\Models\UploadGroup', 'id', 'uploadGroup');
     }

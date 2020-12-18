@@ -15,7 +15,7 @@ class UploadController extends Controller
         if ($files = $request->file('image')) {
             $uploadGroupID = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'), 0, 6);
 
-            $uploadGroup = new UploadGroup;
+            $uploadGroup = new UploadGroup();
             $uploadGroup->uniqueid = $uploadGroupID;
             $uploadGroup->author = Auth::user()->id;
             $uploadGroup->save();
@@ -32,6 +32,7 @@ class UploadController extends Controller
                     'author'      => Auth::user()->id,
                 ]);
             }
+
             return route('file.view', $uploadGroup->uniqueid);
         }
         abort(400, ':(');
