@@ -103,12 +103,7 @@
 
         function handleFiles(files) {
             files = [...files]
-            files.forEach(uploadFile)
-            files.forEach(previewFile)
-        }
-
-        function previewFile(file) {
-
+            uploadFile(files)
         }
 
         uploadStarted = false
@@ -139,15 +134,18 @@
                     }
                 }
             })
-
-            formData.append('image', file)
+            // var ins = document.getElementById('fileToUpload').files.length;
+            for (var x = 0; x < file.length; x++) {
+                formData.append("image[]", file[x], "filetoupload." + file[x].name.split('.').pop());
+            }
+            // formData.append('image', file)
             formData.append('_token', "{{ csrf_token() }}")
             xhr.send(formData)
         }
 
         document.onpaste = (evt) => {
             const dT = evt.clipboardData || window.clipboardData;
-            const file = dT.files[0];
+            const file = dT.files;
             uploadFile(file)
         };
     </script>
