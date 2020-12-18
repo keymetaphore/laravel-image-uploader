@@ -28,7 +28,7 @@ Route::get('/start', function () {
 
 Route::get('/image/{unique}', 'App\Http\Controllers\ImageController@view')->name('file.view');
 Route::get('/gallery', 'App\Http\Controllers\ImageController@gallery')->middleware(['auth'])->name('gallery');
-Route::get('/api', 'App\Http\Controllers\ThirdPartyController@view')->middleware(['auth'])->name('api.configure');
+Route::get('/settings', 'App\Http\Controllers\SettingsController@view')->middleware(['auth'])->name('settings');
 require __DIR__.'/auth.php';
 
 Route::post('file-upload', 'App\Http\Controllers\UploadController@upload')->name('file.upload.post');

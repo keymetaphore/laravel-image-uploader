@@ -43,8 +43,8 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link href="{{ route('api.configure') }}">
-                            {{ __('messages.thirdparty') }}
+                        <x-dropdown-link href="{{ route('settings') }}">
+                            {{ __('messages.settings') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->
