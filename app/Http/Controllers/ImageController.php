@@ -8,15 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
 {
-    public function view (Request $request, $unique)
+    public function view(Request $request, $unique)
     {
         $imageData = File::where('uniqueid', $unique)->firstOrFail();
-        abort_unless(file_exists(public_path($imageData->path)), 404, "Mums pazuda jūsu fails");
+        abort_unless(file_exists(public_path($imageData->path)), 404, 'Mums pazuda jūsu fails');
+
         return view('view-image')
             ->with(['imageLink' => asset($imageData->path)]);
     }
 
-    public function gallery (Request $request)
+    public function gallery(Request $request)
     {
         $images = File::orderBy('id', 'DESC')->where('author', Auth::user()->id)->get();
 

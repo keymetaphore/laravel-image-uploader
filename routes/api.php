@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Models\File;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,6 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::middleware('apitoken')->post('image', function (Request $request) {
-    (new App\Http\Controllers\UploadController)->upload($request);
+    (new App\Http\Controllers\UploadController())->upload($request);
+
     return 1;
 });
