@@ -6,7 +6,7 @@ return [
     'failedreasons'     => 'Make sure the extension is .jpg, .jpeg, .png and it is <4MB',
     'upload'            => 'Upload an image',
     'gallery'           => 'Gallery',
-    'thirdparty'        => 'Third party integration',
+    'settings'          => 'Settings',
     'logout'            => 'Logout',
     'your_photos'       => 'Your images',
     'views'             => 'views',
