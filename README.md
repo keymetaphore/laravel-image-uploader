@@ -20,7 +20,6 @@ In your terminal:
 ```
 git clone https://github.com/keymetaphore/laravel-image-uploader
 composer install
-npm install
 cp .env.example .env
 php artisan key:generate
 php artisan migrate
