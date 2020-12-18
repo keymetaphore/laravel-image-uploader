@@ -16,12 +16,17 @@ $user->save();
 
 ## Installation
 
-In your terminal:
+- Create a database
+
+- Execute:
 ```
 git clone https://github.com/keymetaphore/laravel-image-uploader
 composer install
-npm install
 cp .env.example .env
+```
+- Configure .env file with the correct database credentials
+- Execute:
+```
 php artisan key:generate
 php artisan migrate
 ```
