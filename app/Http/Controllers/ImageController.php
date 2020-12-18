@@ -11,7 +11,7 @@ class ImageController extends Controller
     public function view(Request $request, $unique)
     {
         $imageData = File::where('uniqueid', $unique)->firstOrFail();
-        abort_unless(file_exists(public_path($imageData->path)), 404, 'Mums pazuda jūsu fails');
+        abort_unless(file_exists(public_path($imageData->path)), 404, 'File not found');
 
         return view('view-image')
             ->with(['imageLink' => asset($imageData->path)]);
