@@ -6,6 +6,7 @@ use App\Models\File;
 use App\Models\UploadGroup;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 
 class ImageController extends Controller
@@ -22,6 +23,7 @@ class ImageController extends Controller
         $images->save();
 
         $date = Carbon::parse($images->created_at);
+        $date->locale(App::getLocale());
         return view('view-image')
             ->with(['views' => $images->views, 'images' => $images->images, 'created_at' => $date->diffForHumans()]);
     }
