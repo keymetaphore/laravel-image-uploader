@@ -11,14 +11,17 @@ class ImageController extends Controller
 {
     public function view(Request $request, $unique)
     {
-        $images = UploadGroup::where('uniqueid', $unique)->firstOrFail()->images;
+        $images = UploadGroup::where('uniqueid', $unique)->firstOrFail();
 
-        foreach ($images as $image) {
+        foreach ($images->images as $image) {
             abort_unless(file_exists(public_path($image->path)), 404, 'File not found');
         }
 
+        $images->increment('views');
+        $images->save();
+
         return view('view-image')
-            ->with(['images' => $images]);
+            ->with(['views' => $images->views, 'images' => $images->images]);
     }
 
     public function gallery(Request $request)
