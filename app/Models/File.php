@@ -15,4 +15,9 @@ class File extends Model
     {
         return $this->hasOne('App\Models\UploadGroup', 'id', 'uploadGroup');
     }
+
+    public function creator()
+    {
+        return $this->hasOne('App\Models\User', 'id', 'author');
+    }
 }
