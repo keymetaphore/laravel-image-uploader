@@ -24,6 +24,7 @@ class ImageController extends Controller
 
         $date = Carbon::parse($images->created_at);
         $date->locale(App::getLocale());
+
         return view('view-image')
             ->with(['views' => $images->views, 'images' => $images->images, 'created_at' => $date->diffForHumans()]);
     }
