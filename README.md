@@ -7,6 +7,7 @@
 - Execute:
 ```
 git clone https://github.com/keymetaphore/laravel-image-uploader
+cd laravel-image-uploader
 composer install
 cp .env.example .env
 ```
@@ -17,6 +18,7 @@ php artisan key:generate
 php artisan migrate
 php artisan storage:link
 ```
+- Make sure the storage directory has correct permissions for file uploading
 
 # Warning
 At this stage, this project is not ready for production use
