@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Session;
 
 class Locale
 {
-    const JANIS = 1;
     /**
      * Handle an incoming request.
      *
