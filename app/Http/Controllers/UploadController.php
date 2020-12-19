@@ -7,6 +7,7 @@ use App\Models\UploadGroup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class UploadController extends Controller
 {
@@ -21,6 +22,8 @@ class UploadController extends Controller
             $uploadGroup->save();
 
             foreach ($files as $file) {
+                $validator = Validator::make(['file' => $file], ['file' => 'mimes:jpg,png,jpeg']);
+                abort_if($validator->fails(), 400);
                 $extension = $file->extension();
                 $fileName = substr(str_shuffle('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'), 0, 6);
                 $file->storeAs('/public', $fileName.'.'.$extension);
