@@ -63,7 +63,7 @@
                 <div class="mt-10 text-gray-100 bg-gray-700 col-span-3">
                     <div class="grid grid-cols-2">
                         <div>
-                            <p class="text-gray-400 ml-10">{{ $views }} {{ __('messages.views') }} • 12d</p>
+                            <p class="text-gray-400 ml-10">{{ $views }} {{ __('messages.views') }} • {{ $created_at }}</p>
                         </div>
                         <div>
                             <p class="text-gray-400 text-right mr-10">{{ __('messages.uploaded') }} {{ $image->creator->name }}</p>

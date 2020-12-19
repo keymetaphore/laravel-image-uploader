@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\File;
 use App\Models\UploadGroup;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,9 @@ class ImageController extends Controller
         $images->increment('views');
         $images->save();
 
+        $date = Carbon::parse($images->created_at);
         return view('view-image')
-            ->with(['views' => $images->views, 'images' => $images->images]);
+            ->with(['views' => $images->views, 'images' => $images->images, 'created_at' => $date->diffForHumans()]);
     }
 
     public function gallery(Request $request)
