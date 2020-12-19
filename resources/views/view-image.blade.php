@@ -66,7 +66,7 @@
                             <p class="text-gray-400 ml-10">0 {{ __('messages.views') }} • 12d</p>
                         </div>
                         <div>
-                            <p class="text-gray-400 text-right mr-10">{{ __('messages.uploaded') }} a user</p>
+                            <p class="text-gray-400 text-right mr-10">{{ __('messages.uploaded') }} {{ $image->creator->name }}</p>
                         </div>
                     </div>
 
